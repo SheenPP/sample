@@ -7,7 +7,6 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 
 
-
 // Navigation items for the NavBar
 const navItems = [
   { path: "/", name: "Home" },
