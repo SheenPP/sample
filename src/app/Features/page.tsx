@@ -1,6 +1,6 @@
 import React from 'react';
 import './Features.css';
-import { FaUserAlt, FaHeart, FaLanguage, FaShieldAlt, FaMapMarkerAlt, FaDatabase, FaCheckCircle } from 'react-icons/fa';
+import { FaUserAlt, FaHeart, FaLanguage, FaShieldAlt, FaMapMarkerAlt, FaDatabase, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 export default function Features() {
     return (
@@ -10,13 +10,13 @@ export default function Features() {
                 <div className="feature-box">
                     <FaUserAlt className="feature-icon" />
                     <h2 className="feature-title">USER PROFILE</h2>
-                    <p>Passionate adventurer seeking genuine connections. Art, music, and spontaneous adventures await. Let's explore together!</p>
+                    <p>Passionate adventurer seeking genuine connections. Art, music, and spontaneous adventures await. Let&apos;s explore together!</p>
                     <p>Apasionado aventurero buscando conexiones genuinas. Amante del arte, la música y las aventuras espontáneas. ¡Vamos a explorar juntos!</p>
                 </div>
                 <div className="feature-box">
                     <FaHeart className="feature-icon" />
                     <h2 className="feature-title">MATCHING</h2>
-                    <p>Finding the perfect match requires not just compatibility, but also the willingness to grow together through life’s twists and turns.</p>
+                    <p>Finding the perfect match requires not just compatibility, but also the willingness to grow together through life&apos;s twists and turns.</p>
                     <p>Den perfekten Partner zu finden, erfordert nicht nur Kompatibilität, sondern auch die Bereitschaft, gemeinsam durch die Höhen und Tiefen des Lebens zu wachsen.</p>
                 </div>
                 <div className="feature-box">
@@ -46,8 +46,8 @@ export default function Features() {
                 <div className="feature-box">
                     <FaCheckCircle className="feature-icon" />
                     <h2 className="feature-title">USER VERIFICATION</h2>
-                    <p>Profiles verified 🟢: This user's identity has been authenticated, providing a safer and more authentic dating experience for our community.</p>
-                    <p>Profile not verified ❌: This</p>
+                    <p><FaCheckCircle style={{ color: 'green' }} /> This user&apos;s identity has been authenticated, providing a safer and more authentic dating experience for our community.</p>
+                    <p><FaTimesCircle style={{ color: 'red' }} /> This user&apos;s identity has not been authenticated.</p>
                 </div>
             </div>
         </main>
