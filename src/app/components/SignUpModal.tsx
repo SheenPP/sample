@@ -1,6 +1,13 @@
+import React from 'react';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
-const SignUpModal = ({ isOpen, onClose }) => {
+// Define an interface for the props
+interface SignUpModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (

@@ -1,7 +1,14 @@
+import React from 'react';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";  // Importing email icon from react-icons/md
 
-const LogInModal = ({ isOpen, onClose }) => {
+// Define an interface for the props
+interface LogInModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const LogInModal: React.FC<LogInModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
