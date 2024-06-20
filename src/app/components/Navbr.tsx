@@ -1,10 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
+import SignUpModal from './SignUpModal';
+import LogInModal from './LoginModal';
 
 // Navigation items for the NavBar
 const navItems = [
@@ -25,9 +26,25 @@ function NavBar() {
   // State to handle mobile menu toggle
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // State to handle SignUp modal visibility
+  const [isSignUpOpen, setSignUpOpen] = useState(false);
+
+  // State to handle LogIn modal visibility
+  const [isLogInOpen, setLogInOpen] = useState(false);
+
   // Toggle the mobile menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Toggle the SignUp modal visibility
+  const toggleSignUpModal = () => {
+    setSignUpOpen(!isSignUpOpen);
+  };
+
+  // Toggle the LogIn modal visibility
+  const toggleLogInModal = () => {
+    setLogInOpen(!isLogInOpen);
   };
 
   return (
@@ -68,38 +85,42 @@ function NavBar() {
 
         {/* Authentication Links */}
         <div className="hidden md:flex">
-          <Link
-            href="/signup"
+          <button
+            onClick={toggleSignUpModal}
             className="px-8 py-1 rounded-tl-2xl rounded-bl-2xl text-sm lg:text-base font-bold text-white bg-custom-red no-underline shadow-md"
           >
             Signup
-          </Link>
-          <Link
-            href="/login"
+          </button>
+          <button
+            onClick={toggleLogInModal}
             className="px-8 py-1 rounded-tr-2xl rounded-br-2xl text-sm lg:text-base font-bold text-black bg-gray-100 no-underline shadow-md"
           >
             Login
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Authentication Links */}
         {menuOpen && (
           <div className="flex flex-col md:hidden mt-2">
-            <Link
-              href="/signup"
+            <button
+              onClick={toggleSignUpModal}
               className="px-8 py-2 text-sm text-white font-bold bg-custom-red no-underline shadow-md"
             >
               Signup
-            </Link>
-            <Link
-              href="/login"
+            </button>
+            <button
+              onClick={toggleLogInModal}
               className="px-8 py-2 text-sm text-black font-bold bg-gray-100 no-underline shadow-md mt-1"
             >
               Login
-            </Link>
+            </button>
           </div>
         )}
       </div>
+
+      {/* Render Modals */}
+      <SignUpModal isOpen={isSignUpOpen} onClose={toggleSignUpModal} />
+      <LogInModal isOpen={isLogInOpen} onClose={toggleLogInModal} />
     </nav>
   );
 }
