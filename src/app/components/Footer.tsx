@@ -1,7 +1,8 @@
+// Footer.tsx
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import './Footer.css'; // Import CSS file for styling
 
 interface FooterProps {
   companyName: string;
@@ -31,19 +32,19 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
   }, []);
 
   return (
-    <footer className={`footer ${isFixed ? 'fixed-footer' : 'regular-footer'}`}>
-      <div className="container">
-        <div className="footer-content">
-          <div className="footer-links">
-            <a href="/">Home</a>
-            <a href="/blog">Blog</a>
-            <a href="/partnership">Partnership</a>
-            <a href="/our%20story">Our Story</a>
-            <a href="/contact">Contact</a>
+    <footer className={`bg-gray-800 text-white py-5 text-center ${isFixed ? 'fixed bottom-0 left-0 w-full z-50' : 'relative'} transition-all duration-300`}>
+      <div className="container mx-auto flex flex-col items-center justify-center">
+        <div className="footer-content flex flex-col items-center">
+          <div className="footer-links mb-2 text-center">
+            <a href="/" className="text-white no-underline mx-2 hover:underline">Home</a>
+            <a href="/blog" className="text-white no-underline mx-2 hover:underline">Blog</a>
+            <a href="/partnership" className="text-white no-underline mx-2 hover:underline">Partnership</a>
+            <a href="/our%20story" className="text-white no-underline mx-2 hover:underline">Our Story</a>
+            <a href="/contact" className="text-white no-underline mx-2 hover:underline">Contact</a>
           </div>
         </div>
-        <hr className="divider" />
-        <p>Copyright &copy; {year} {companyName}</p>
+        <hr className="w-full max-w-4xl my-2 border-t border-gray-400" />
+        <p className="mt-2 text-sm text-center">&copy; {year} {companyName}</p>
       </div>
     </footer>
   );
