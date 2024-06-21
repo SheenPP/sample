@@ -20,9 +20,11 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['"IBM Plex Sans"', 'sans-serif'],
+        cursive: ['"Dancing Script"', 'cursive'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;
