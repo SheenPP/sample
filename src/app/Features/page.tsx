@@ -16,7 +16,7 @@ export default function Features() {
                         <FaRegCircleUser className="text-pink-500 text-3xl mb-2" />
                         <h2 className="text-lg text-gray-800">USER PROFILE</h2>
                     </div>
-                    <p className="text-sm text-gray-600 leading-6">Passionate adventurer seeking genuine connections. Art, music, and spontaneous adventures await. Let's explore together!</p>
+                    <p className="text-sm text-gray-600 leading-6">Passionate adventurer seeking genuine connections. Art, music, and spontaneous adventures await. Let&apos;s explore together!</p>
                     <p className="text-sm text-gray-600 leading-6">Apasionado aventurero buscando conexiones genuinas. Amante del arte, la música y las aventuras espontáneas. ¡Vamos a explorar juntos!</p>
                 </div>
                 <div className="bg-white border border-gray-300 rounded-lg p-5 w-72 shadow-lg relative text-left">
@@ -24,7 +24,7 @@ export default function Features() {
                         <TbUserSearch className="text-pink-500 text-3xl mb-2" />
                         <h2 className="text-lg text-gray-800">MATCHING</h2>
                     </div>
-                    <p className="text-sm text-gray-600 leading-6">Finding the perfect match requires not just compatibility, but also the willingness to grow together through life's twists and turns.</p>
+                    <p className="text-sm text-gray-600 leading-6">Finding the perfect match requires not just compatibility, but also the willingness to grow together through life&apos;s twists and turns.</p>
                     <p className="text-sm text-gray-600 leading-6">Den perfekten Partner zu finden, erfordert nicht nur Kompatibilität, sondern auch die Bereitschaft, gemeinsam durch die Höhen und Tiefen des Lebens zu wachsen.</p>
                 </div>
                 <div className="bg-white border border-gray-300 rounded-lg p-5 w-72 shadow-lg relative text-left">
@@ -64,8 +64,8 @@ export default function Features() {
                         <LuBadgeCheck className="text-pink-500 text-3xl mb-2" />
                         <h2 className="text-lg text-gray-800">USER VERIFICATION</h2>
                     </div>
-                    <p className="text-sm text-gray-600 leading-6"><FaCheckCircle className="text-blue-500" /> This user's identity has been authenticated, providing a safer and more authentic dating experience for our community.</p>
-                    <p className="text-sm text-gray-600 leading-6"><FaTimesCircle className="text-red-500" /> This user's identity has not been authenticated.</p>
+                    <p className="text-sm text-gray-600 leading-6"><FaCheckCircle className="text-blue-500" /> This user&apos;s identity has been authenticated, providing a safer and more authentic dating experience for our community.</p>
+                    <p className="text-sm text-gray-600 leading-6"><FaTimesCircle className="text-red-500" /> This user&apos;s identity has not been authenticated.</p>
                 </div>
             </div>
         </main>
