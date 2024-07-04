@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
@@ -9,7 +9,6 @@ import LogInModal from './LoginModal';
 
 // Navigation items for the NavBar
 const navItems = [
-  { path: "/", name: "Home" },
   { path: "/Features", name: "Features" },
   { path: "/About", name: "About" },
   { path: "/Success_Stories", name: "Success Stories" },
@@ -35,15 +34,17 @@ function NavBar() {
   // State to handle active button
   const [activeButton, setActiveButton] = useState<null | string>(null);
 
+  const router = useRouter();
+
   // Toggle the mobile menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Toggle the SignUp modal visibility
-  const toggleSignUpModal = () => {
+  // Toggle the SignUp modal visibility and navigate to registration page
+  const toggleSignUp = () => {
     setActiveButton('signup');
-    setSignUpOpen(!isSignUpOpen);
+    router.push('/registration');
   };
 
   // Toggle the LogIn modal visibility
@@ -56,9 +57,9 @@ function NavBar() {
     <nav className="fixed top-0 w-full z-50">
       <div className="flex flex-wrap items-center justify-between max-w-7xl mx-auto p-4">
         {/* Logo Section */}
-        <div className="flex items-center">
+        <Link href="/">
           <Image src="/logo.png" alt="LoveChat Logo" width={130} height={200} className="h-16 md:h-20" />
-        </div>
+        </Link>
 
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden ml-auto" onClick={toggleMenu}>
@@ -93,7 +94,7 @@ function NavBar() {
         {/* Authentication Links */}
         <div className="hidden md:flex md:items-center shadow-inner rounded-2xl bg-white space-x-2">
           <button
-            onClick={toggleSignUpModal}
+            onClick={toggleSignUp}
             className={`px-8 py-2 md:py-1 text-sm lg:text-base font-bold rounded-tl-2xl rounded-bl-2xl ${
               activeButton === 'signup'
                 ? 'text-white bg-custom-red rounded-2xl'
@@ -118,7 +119,7 @@ function NavBar() {
         {menuOpen && (
           <div className="flex flex-col md:hidden mt-2 bg-white space-y-1">
             <button
-              onClick={toggleSignUpModal}
+              onClick={toggleSignUp}
               className={`px-8 py-2 text-sm font-bold shadow-md rounded ${
                 activeButton === 'signup'
                   ? 'text-white bg-custom-red'
@@ -142,7 +143,7 @@ function NavBar() {
       </div>
 
       {/* Render Modals */}
-      <SignUpModal isOpen={isSignUpOpen} onClose={toggleSignUpModal} />
+      <SignUpModal isOpen={isSignUpOpen} onClose={toggleSignUp} />
       <LogInModal isOpen={isLogInOpen} onClose={toggleLogInModal} />
     </nav>
   );
