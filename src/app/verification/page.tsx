@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FiMail, FiSmartphone } from 'react-icons/fi';
@@ -9,31 +10,57 @@ const Verification = () => {
   const [emailInputVisible, setEmailInputVisible] = useState(false);
   const [otpVisible, setOtpVisible] = useState(false);
   const [verificationMethod, setVerificationMethod] = useState<string>('');
+  const [verificationSent, setVerificationSent] = useState<boolean>(false);
+  const [otpInput, setOtpInput] = useState<string>(''); // State for OTP input
   const router = useRouter();
 
   const handleMobileClick = () => {
     setMobileInputVisible(true);
     setEmailInputVisible(false);
+    setVerificationSent(false); // Reset verificationSent state
   };
 
   const handleEmailClick = () => {
     setMobileInputVisible(false);
     setEmailInputVisible(true);
+    setVerificationSent(false); // Reset verificationSent state
   };
 
   const handleSendOtp = (method: string) => {
-    setOtpVisible(true);
-    setVerificationMethod(method);
+    if (method === 'email') {
+      // Simulate sending verification email
+      // Replace this with actual email sending logic
+      setTimeout(() => {
+        setVerificationSent(true);
+        setVerificationMethod(method);
+      }, 1000); // Simulating delay for sending email
+    } else {
+      // Simulate sending SMS OTP
+      // Replace this with actual SMS sending logic
+      setTimeout(() => {
+        setOtpVisible(true);
+        setVerificationSent(true);
+        setVerificationMethod(method);
+      }, 1000); // Simulating delay for sending SMS
+    }
+  };
+
+  const handleVerify = () => {
+    // Add logic to verify OTP here
+    console.log('Verifying OTP:', otpInput);
+    // Reset OTP input after verification
+    setOtpInput('');
+    // Navigate to /Signup after verification
+    router.push('/Signup');
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      {!otpVisible ? (
+      {!verificationSent ? (
         <>
           <h1 className="text-4xl font-bold font-cursive mb-8">Welcome</h1>
           <p className="mb-4 font-mono">Please choose verification method</p>
           <div className="flex flex-col gap-6">
-            
             {/* Mobile Number */}
             <div className="flex flex-row items-center font-mono">
               <div className="relative w-full flex items-center mb-4 transition-all duration-500 ease-in-out">
@@ -97,14 +124,14 @@ const Verification = () => {
                   onClick={() => handleSendOtp('email')}
                   className="px-4 py-2 w-32 shadow-sm bg-white text-black rounded-full hover:bg-red-500 hover:text-white transition duration-300"
                 >
-                  Send OTP
+                  Send
                 </button>
               )}
             </div>
           </div>
         </>
       ) : (
-        <div className="w-80">
+        <div className="w-96">
           <div className="flex justify-center mb-6">
             <div className="text-custom-red p-6">
               {verificationMethod === 'mobile' ? (
@@ -114,21 +141,40 @@ const Verification = () => {
               )}
             </div>
           </div>
-          <h2 className="text-2xl font-bold font-cursive text-center mb-4">Verification</h2>
-          <p className="text-center font-mono text-black mb-6">
-            {verificationMethod === 'mobile' ? 'You will get OTP via SMS' : 'You will get OTP via Email'}
-          </p>
-          <div className="flex justify-center mb-4">
-            <input
-              type="text"
-              className="border border-gray-300 rounded-lg px-4 py-2 w-full text-center"
-              maxLength={4}
-              placeholder="• • • •"
-            />
-          </div>
-          <button className="w-full bg-custom-red text-white py-2 rounded-lg hover:bg-pink-600 transition duration-300">
-            Verify
-          </button>
+          <h2 className="text-6xl font-bold font-cursive text-center mb-4">
+            {verificationMethod === 'mobile' ? 'Verification' : 'Check your email'}
+          </h2>
+          {verificationMethod === 'mobile' ? (
+            <>
+              <p className="text-center font-mono text-black mb-6">
+                You will get OTP via SMS
+              </p>
+              <div className="flex justify-center mb-4">
+                <input
+                  type="text"
+                  className="border border-gray-300 rounded-lg px-4 py-2 w-full text-center"
+                  value={otpInput}
+                  onChange={(e) => setOtpInput(e.target.value)}
+                  maxLength={4}
+                  placeholder="• • • •"
+                />
+              </div>
+              <button
+                onClick={handleVerify}
+                className="w-full bg-custom-red text-white py-2 rounded-lg hover:bg-pink-600 transition duration-300"
+              >
+                Verify
+              </button>
+            </>
+          ) : (
+            <><p className="text-center font-mono text-black mb-6">
+                  A verification has been sent to your email<br />
+                  youremail@gmail.com
+                </p>
+              <p className="text-center text-sm font-mono text-black">(You may now close this page)</p>
+              </>
+          )}
+          
         </div>
       )}
     </div>
