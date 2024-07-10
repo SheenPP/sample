@@ -42,7 +42,7 @@ const Signup = () => {
               <option value="" disabled hidden></option>
               <option>ID Card</option>
               <option>Passport</option>
-              <option>Driver's License</option>
+              <option>Driver&#39;s License</option>
             </select>
             <label className="absolute left-5 -top-3 text-black text-sm bg-white px-1 transition-all duration-200 ease-in-out">Select ID</label>
           </div>
