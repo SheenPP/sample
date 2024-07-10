@@ -1,6 +1,17 @@
+"use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 const Signup = () => {
+
+  const router = useRouter();
+
+  const handleRegister = () => {
+
+    router.push('/Success');
+  };
+
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="p-8 rounded-lg w-full max-w-md">
@@ -63,7 +74,8 @@ const Signup = () => {
           </div>
         </form>
         <div className="text-center mt-6">
-          <button className="bg-custom-red text-white py-3 px-6 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+          <button onClick={handleRegister}
+          className="bg-custom-red text-white py-3 px-6 rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
             Register
           </button>
         </div>
